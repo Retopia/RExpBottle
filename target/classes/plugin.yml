@@ -11,4 +11,4 @@ commands:
 permissions:
   rbottle.use:
     description: Allows the use of the /rbottle command.
-    default: true
+    default: trues
