@@ -1,0 +1,14 @@
+name: RExpBottle
+main: rexpbottle.RExpBottle
+version: 1.0
+api-version: 1.21
+description: A plugin to convert experience points into experience bottles.
+commands:
+  rbottle:
+    description: Converts experience points into experience bottles.
+    usage: /rbottle <amount> [number of bottles] or /rbottle all
+    permission: rbottle.use
+permissions:
+  rbottle.use:
+    description: Allows the use of the /rbottle command.
+    default: trues
