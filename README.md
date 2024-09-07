@@ -5,4 +5,4 @@ Basic plugin that supports the following commands:
 
 Supports permission `rbottle.use`
 
-This plugin is tested to work with 1.21.1
+This plugin is tested to work with paper 1.21.1
