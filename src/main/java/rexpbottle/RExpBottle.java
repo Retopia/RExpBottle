@@ -5,7 +5,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -27,7 +26,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class RExpBottle extends JavaPlugin implements CommandExecutor, Listener {
+public class RExpBottle extends JavaPlugin implements Listener {
 
     private final NamespacedKey expKey = new NamespacedKey(this, "expAmount");
 
@@ -68,12 +67,10 @@ public class RExpBottle extends JavaPlugin implements CommandExecutor, Listener 
                 int totalExpNeeded = amount * numBottles;
 
                 if (totalExpNeeded <= playerExp) {
-                    int createdBottles = 0;
                     int addedToInventory = 0;
 
                     for (int i = 0; i < numBottles; i++) {
                         boolean addedToInv = createExpBottle(player, amount);
-                        createdBottles++;
                         if (addedToInv) {
                             addedToInventory++;
                         }
@@ -130,23 +127,6 @@ public class RExpBottle extends JavaPlugin implements CommandExecutor, Listener 
             }
             return false;
         }
-    }
-
-    private boolean canAddItem(Inventory inventory, ItemStack item, int amount) {
-        int freeSpace = 0;
-        for (ItemStack invItem : inventory.getStorageContents()) {
-            if (invItem == null || invItem.getType() == Material.AIR) {
-                freeSpace += item.getMaxStackSize();
-            } else if (invItem.getType() == item.getType() &&
-                    invItem.getItemMeta().equals(item.getItemMeta())) {
-                freeSpace += invItem.getMaxStackSize() - invItem.getAmount();
-            }
-
-            if (freeSpace >= amount) {
-                return true;
-            }
-        }
-        return false;
     }
 
     @EventHandler
